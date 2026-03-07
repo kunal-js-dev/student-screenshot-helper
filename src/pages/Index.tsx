@@ -35,9 +35,29 @@ const Index = () => {
               AI Tools<span className="text-primary"> Hub</span>
             </h1>
           </div>
-          <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary">
-            <GraduationCap className="h-4 w-4" />
-            <span className="hidden sm:inline">Student Friendly</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary">
+              <GraduationCap className="h-4 w-4" />
+              <span className="hidden sm:inline">Student Friendly</span>
+            </div>
+            {user ? (
+              <div className="flex items-center gap-2">
+                <span className="hidden text-sm text-muted-foreground sm:inline">
+                  {user.email?.split("@")[0]}
+                </span>
+                <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
+                  <LogOut className="h-4 w-4" />
+                  <span className="hidden sm:inline">Sign Out</span>
+                </Button>
+              </div>
+            ) : (
+              <Link to="/login">
+                <Button variant="outline" size="sm" className="gap-1">
+                  <LogIn className="h-4 w-4" />
+                  <span className="hidden sm:inline">Sign In</span>
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </header>
