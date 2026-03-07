@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Search, ExternalLink, Sparkles, GraduationCap } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User } from "lucide-react";
 import { categories } from "@/data/tools";
 import { CategoryCard } from "@/components/CategoryCard";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const [search, setSearch] = useState("");
