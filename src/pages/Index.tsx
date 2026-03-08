@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User, Loader2 } from "lucide-react";
+import aiToolsBgVideo from "@/assets/ai-tools-bg.mp4";
 import { categories } from "@/data/tools";
 import { CategoryCard } from "@/components/CategoryCard";
 import { useAuth } from "@/contexts/AuthContext";
@@ -69,7 +70,15 @@ const Index = () => {
       </header>
 
       {/* Hero */}
-      <section className="container mx-auto px-4 py-10 text-center">
+      <section className="relative container mx-auto px-4 py-10 text-center overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-20 -z-10 rounded-2xl"
+          src={aiToolsBgVideo}
+        />
         <h2 className="font-heading text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
           AI Productivity Tools
         </h2>
