@@ -39,7 +39,8 @@ const Signup = () => {
     if (error) {
       toast.error(error.message);
     } else {
-      setSent(true);
+      toast.success("Account created successfully!");
+      navigate("/");
     }
   };
 
