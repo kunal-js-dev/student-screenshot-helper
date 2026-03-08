@@ -1,15 +1,27 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User } from "lucide-react";
+import { Link, Navigate } from "react-router-dom";
+import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User, Loader2 } from "lucide-react";
 import { categories } from "@/data/tools";
 import { CategoryCard } from "@/components/CategoryCard";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
-  const { user, signOut } = useAuth();
+  const { user, loading, signOut } = useAuth();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   const filteredCategories = categories
     .map((cat) => ({
