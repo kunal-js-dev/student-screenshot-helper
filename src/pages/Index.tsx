@@ -76,9 +76,10 @@ const Index = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-20 -z-10 rounded-2xl"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 -z-10 rounded-2xl"
           src={aiToolsBgVideo}
         />
+        <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-b from-background/60 via-background/30 to-background/80" />
         <h2 className="font-heading text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
           AI Productivity Tools
         </h2>
