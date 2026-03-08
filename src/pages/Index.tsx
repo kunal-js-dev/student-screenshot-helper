@@ -52,27 +52,18 @@ const Index = () => {
               <GraduationCap className="h-4 w-4" />
               <span className="hidden sm:inline">Student Friendly</span>
             </div>
-            {user ? (
-              <div className="flex items-center gap-2">
-                <Link to="/profile">
-                  <Button variant="ghost" size="sm" className="gap-1">
-                    <User className="h-4 w-4" />
-                    <span className="hidden sm:inline">Profile</span>
-                  </Button>
-                </Link>
-                <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
-                  <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Sign Out</span>
-                </Button>
-              </div>
-            ) : (
-              <Link to="/login">
-                <Button variant="outline" size="sm" className="gap-1">
-                  <LogIn className="h-4 w-4" />
-                  <span className="hidden sm:inline">Sign In</span>
+            <div className="flex items-center gap-2">
+              <Link to="/profile">
+                <Button variant="ghost" size="sm" className="gap-1">
+                  <User className="h-4 w-4" />
+                  <span className="hidden sm:inline">Profile</span>
                 </Button>
               </Link>
-            )}
+              <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
+                <LogOut className="h-4 w-4" />
+                <span className="hidden sm:inline">Sign Out</span>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
