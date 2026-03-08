@@ -51,25 +51,7 @@ const Signup = () => {
     if (error) toast.error("Google sign-in failed");
   };
 
-  if (sent) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background px-4">
-        <Card className="w-full max-w-md text-center">
-          <CardHeader>
-            <CardTitle>Check your email ✉️</CardTitle>
-            <CardDescription>
-              We've sent a verification link to <strong>{email}</strong>. Click it to activate your account.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter className="justify-center">
-            <Link to="/login" className="text-sm text-primary hover:underline">
-              Back to login
-            </Link>
-          </CardFooter>
-        </Card>
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
