@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User, Loader2 } from "lucide-react";
+import aiToolsBgVideo from "@/assets/ai-tools-bg.mp4";
 import { categories } from "@/data/tools";
 import { CategoryCard } from "@/components/CategoryCard";
 import { useAuth } from "@/contexts/AuthContext";
