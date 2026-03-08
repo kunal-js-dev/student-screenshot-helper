@@ -1,15 +1,27 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User } from "lucide-react";
+import { Link, Navigate } from "react-router-dom";
+import { Search, ExternalLink, Sparkles, GraduationCap, LogIn, LogOut, User, Loader2 } from "lucide-react";
 import { categories } from "@/data/tools";
 import { CategoryCard } from "@/components/CategoryCard";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
-  const { user, signOut } = useAuth();
+  const { user, loading, signOut } = useAuth();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   const filteredCategories = categories
     .map((cat) => ({
@@ -40,27 +52,18 @@ const Index = () => {
               <GraduationCap className="h-4 w-4" />
               <span className="hidden sm:inline">Student Friendly</span>
             </div>
-            {user ? (
-              <div className="flex items-center gap-2">
-                <Link to="/profile">
-                  <Button variant="ghost" size="sm" className="gap-1">
-                    <User className="h-4 w-4" />
-                    <span className="hidden sm:inline">Profile</span>
-                  </Button>
-                </Link>
-                <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
-                  <LogOut className="h-4 w-4" />
-                  <span className="hidden sm:inline">Sign Out</span>
-                </Button>
-              </div>
-            ) : (
-              <Link to="/login">
-                <Button variant="outline" size="sm" className="gap-1">
-                  <LogIn className="h-4 w-4" />
-                  <span className="hidden sm:inline">Sign In</span>
+            <div className="flex items-center gap-2">
+              <Link to="/profile">
+                <Button variant="ghost" size="sm" className="gap-1">
+                  <User className="h-4 w-4" />
+                  <span className="hidden sm:inline">Profile</span>
                 </Button>
               </Link>
-            )}
+              <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
+                <LogOut className="h-4 w-4" />
+                <span className="hidden sm:inline">Sign Out</span>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
